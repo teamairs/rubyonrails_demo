@@ -1,0 +1,47 @@
+<% if notice%>
+  <aside id="notice"> <%= notice %> </aside>
+<% end %>
+
+<h1>Products</h1>
+
+<table>
+  <tfoot>
+    <tr>
+      <td colspan="3">
+        <%= link_to 'New product', new_product_path %>
+      </td>
+    </tr>
+  </tfoot>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <!-- cycle 循环选取 -->
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+        <td class="image">
+          <!-- image_tag ruby加载图片 -->
+          <%= image_tag(product.image_url, class:'list_image') %>
+        </td>
+        <td class="description">
+          <h1><%= product.title %></h1>
+          <p>
+            <!-- truncate ruby截断字符串省略显示，可规定长度 -->
+            <!-- strip_tags ruby过滤掉所有的html标签 -->
+            <%= truncate(strip_tags(product.description),length:80) %>
+          </p>
+        </td>
+        <td class="actions">
+          <ul>
+            <li><%= link_to 'Show', product %></li>
+            <li><%= link_to 'Edit', edit_product_path(product) %></li>
+            <li><%= link_to 'Destory',
+                            product,
+                            method: :delete,
+                            data:{ confirm: 'Are you sure?'}%></li>
+          </ul>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
