@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Depot</title>
+    <title>Pragprog Books Online Store</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -10,6 +10,7 @@
 
   <body>
     <main class='<%= controller.controller_name%>'>
+      <!-- 在布局中，yield 标明一个区域，渲染的视图会插入这里。最简单的情况是只有一个 yield，此时渲染的整个视图都会插入这个区域 -->
       <%= yield %>
     </main>
   </body>
