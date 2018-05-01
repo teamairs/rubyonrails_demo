@@ -2,16 +2,32 @@
 <html>
   <head>
     <title>Pragprog Books Online Store</title>
+    <!-- 跨站点防护 -->
     <%= csrf_meta_tags %>
-
+    <!-- 生成<link> tag 加快反应速度 -->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- 生成<script> tag -->
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <main class='<%= controller.controller_name%>'>
-      <!-- 在布局中，yield 标明一个区域，渲染的视图会插入这里。最简单的情况是只有一个 yield，此时渲染的整个视图都会插入这个区域 -->
-      <%= yield %>
-    </main>
+    <header class="main">
+      <%= image_tag 'logo.svg', alt: 'The Pragmatic Bookshelf' %>
+      <h1><%= @page_title %></h1>
+    </header>
+    <section class="content">
+      <nav class="side_nav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/questions">Questions</a></li>
+          <li><a href="/news">News</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+      <main class='<%= controller.controller_name%>'>
+        <!-- 在布局中，yield 标明一个区域，渲染的视图会插入这里。最简单的情况是只有一个 yield，此时渲染的整个视图都会插入这个区域 -->
+        <%= yield %>
+      </main>
+    </section>
   </body>
 </html>
