@@ -1,6 +1,7 @@
 module CurrentCart
   private
     def set_cart
+      session[:conter] = 0
       @cart = Cart.find(session[:cart_id])
     rescue ActiveRecord::RecordNotFound
       @cart = Cart.create
